@@ -1,6 +1,4 @@
 const { Events } = require("discord.js");
-
-// Kleur is a terminal colorizer similar to Chalk
 const { red, bold, underline } = require("kleur");
 
 // Define a new Map to hold the cooldowns
@@ -35,13 +33,15 @@ module.exports = {
       const expirationTime =
         timestamps.get(interaction.user.id) + cooldownAmount;
 
+      // Made one change to have the reply be ephemeral.
       if (now < expirationTime) {
         const timeLeft = (expirationTime - now) / 1000;
-        return interaction.reply(
-          `Please wait ${timeLeft.toFixed(
+        return interaction.reply({
+          content: `Please wait ${timeLeft.toFixed(
             1
-          )} more second(s) before reusing the \`${command.name}\` command.`
-        );
+          )} more second(s) before reusing the \`${command.name}\` command.`,
+          ephemeral: true,
+        });
       }
     }
 
