@@ -1,0 +1,2 @@
+## Hi, yes I did manage to get it working. I'll post two examples in this, the interaction file and an example command.
+## With the interactionCreate.js file, the code I have has the default cooldown to 3 seconds, even if you don't have it in the command code.
